@@ -167,8 +167,8 @@ exposed on the [AWS API Gateway](https://aws.amazon.com/api-gateway/).
 
 For certain application workflows and workloads Spark task delegation to
 `AWS Lambda` compute infrastructure will make sense. However,
-it is worth noting that this library is provided to extend-not-replace the
-traditional Spark computation model, so we recommend using SAMBA judiciously.
+it is worth noting that this library is provided to `extend-not-replace` the
+traditional Spark computation model, so I recommend using SAMBA judiciously.
 
 ### License
 
