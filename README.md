@@ -13,8 +13,8 @@ library, a lightweight Java client library for calling APIs exposed by the
 
 Within traditional Spark deployments task operations are executed using fixed
 compute resources on worker nodes within the Spark cluster. With SAMBA,
-application developers can delegate selected task operations to execute on
-unbounded, on-demand AWS Lambda compute infrastructure in the cloud.
+application developers can delegate selected task operations to execute using
+ on-demand AWS Lambda compute infrastructure in the cloud.
 
 More generally, SAMBA provides a simple yet powerful mechanism for Spark
 applications to integrate with general REST services exposed on the AWS API
