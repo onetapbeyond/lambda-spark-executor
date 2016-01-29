@@ -25,8 +25,8 @@ Gateway.
 A number of example applications are provided to demonstrate the use of the
 SAMBA library to deliver task delegation and REST integration.
 
-- Task Delegation [ [Scala](examples/scala/task-delegation-world) ][ [Java](examples/java/task-delegation) ]
-- REST Integration [ [Scala](examples/scala/rest-integration) ][ [Java](examples/java/) ]
+- Task Delegation [ [Scala](examples/scala/task-delegation) ][ [Java](examples/java/task-delegation) ]
+- REST Integration [ [Scala](examples/scala/rest-integration) ][ [Java](examples/java/rest-integration) ]
 
 
 ### SAMBA SBT Dependency
