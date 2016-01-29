@@ -41,25 +41,19 @@ object RESTIntegration {
       val dataRDD = sc.parallelize(1 to BATCH_DATA_SIZE)
 
       /*
-       * Simple RDD.collect represents minimal Apache Spark application.
+       * Simple RDD.max represents minimal Apache Spark application.
        */
-      val max = dataRDD.collect.max
+      val max = dataRDD.max
 
       /*
-       * MOCK_API_GATEWAY represents the REST API on the AWS API Gateway
-       * used by this example application.
-       */
-      val gateway = sc.broadcast(MOCK_API_GATEWAY)
-
-      /*
-       * Call the REST "report" service on the API indicated by
+       * Call the REST "report" endpoint on the API indicated by
        * our instance of AWSGateway, pushing the max data value detected
-       * within our Spark driver program. Using a Mock API on the AWS
-       * API Gateway there is no response data, the result simply
-       * indicates success or failure.
+       * within our Spark driver program. As we are using a mock API on
+       * the AWS API Gateway there is no response data, in this case
+       * the result simply indicates success or failure.
        */
-      val aTaskResult = AWS.Task(gateway.value)
-                           .resource(MOCK_API_REPORT_ENDPOINT)
+      val aTaskResult = AWS.Task(API_GATEWAY)
+                           .resource(API_REPORT_ENDPOINT)
                            .input(Map("max" -> max).asJava)
                            .post()
                            .execute()
@@ -83,13 +77,12 @@ object RESTIntegration {
 
   private val APP_NAME = "SAMBA REST Integration Example"
   private val BATCH_DATA_SIZE = 10
-
-  private val MOCK_API_ID = "06ti6xmgg2"
-  private val MOCK_API_STAGE = "mock"
-  private val MOCK_API_REPORT_ENDPOINT = "/report"
-  private val MOCK_API_GATEWAY:AWSGateway = AWS.Gateway(MOCK_API_ID)
-                                               .region(AWS.Region.OREGON)
-                                               .stage(MOCK_API_STAGE)
-                                               .build()
+  private val API_ID = "06ti6xmgg2"
+  private val API_STAGE = "mock"
+  private val API_REPORT_ENDPOINT = "/report"
+  private val API_GATEWAY:AWSGateway = AWS.Gateway(API_ID)
+                                          .region(AWS.Region.OREGON)
+                                          .stage(API_STAGE)
+                                          .build()
 
 }

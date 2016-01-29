@@ -42,26 +42,23 @@ object TaskDelegation {
       val dataRDD = sc.parallelize(1 to BATCH_DATA_SIZE)
 
       /*
-       * MOCK_API_GATEWAY represents the API on the AWS API Gateway
-       * used by this example application. We register the gateway as a
-       * Spark broadcast variable so it can be safely referenced later
-       * within the Spark RDD.map operation that builds our AWSTask.
+       * API_GATEWAY represents the API on the AWS API Gateway
+       * implemented by an AWS Lambda function. We register the gateway
+       * as a Spark broadcast variable so it can be safely referenced
+       * later within the Spark RDD.map operation that builds our AWSTask.
        */
-      val gateway = sc.broadcast(MOCK_API_GATEWAY)
+      val gateway = sc.broadcast(API_GATEWAY)
 
       /*
        * Map over dataRDD[Int] to produce an RDD[AWSTask].
        * Each AWSTask will process the Spark batch data by
-       * executing a mock score computation on the AWS Lambda
+       * executing a score computation on the AWS Lambda
        * compute service.
        */
       val aTaskRDD = dataRDD.map(num => {
 
-        /*
-         * Build mock score computation AWSTask instances.
-         */
         AWS.Task(gateway.value)
-           .resource(MOCK_API_SCORE_ENDPOINT)
+           .resource(API_SCORE_ENDPOINT)
            .input(Map("num" -> num).asJava)
            .post()
       })
@@ -77,9 +74,9 @@ object TaskDelegation {
       /*
        * As this is an example application we can simply use the
        * foreach() operation on the RDD to force the computation
-       * and to output the results. Using a Mock API on the AWS
-       * API Gateway there is no response data, the result simply
-       * indicates success or failure.
+       * and to output the results. And as we are using a mock API
+       * on the AWS API Gateway there is no response data, the
+       * result simply indicates success or failure.
        */
       aTaskResultRDD.foreach { result => {
         println("TaskDelegation: compute score input=" +
@@ -99,13 +96,11 @@ object TaskDelegation {
 
   private val APP_NAME = "SAMBA Task Delegation Example"
   private val BATCH_DATA_SIZE = 10
-
-  private val MOCK_API_ID = "06ti6xmgg2"
-  private val MOCK_API_STAGE = "mock"
-  private val MOCK_API_SCORE_ENDPOINT = "/score"
-  private val MOCK_API_GATEWAY:AWSGateway = AWS.Gateway(MOCK_API_ID)
-                                               .region(AWS.Region.OREGON)
-                                               .stage(MOCK_API_STAGE)
-                                               .build()
-
+  private val API_ID = "06ti6xmgg2"
+  private val API_STAGE = "mock"
+  private val API_SCORE_ENDPOINT = "/score"
+  private val API_GATEWAY:AWSGateway = AWS.Gateway(API_ID)
+                                          .region(AWS.Region.OREGON)
+                                          .stage(API_STAGE)
+                                          .build()
 }
