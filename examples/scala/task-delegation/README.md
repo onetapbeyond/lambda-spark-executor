@@ -1,6 +1,6 @@
 ###Task Delegation
 
-A sample application that demonstrates the basic usage of SAMBA
+A sample Spark application that demonstrates the basic usage of SAMBA
 to delegate selected Spark task operations to execute on AWS Lambda
 compute infrastructure in the cloud.
 
