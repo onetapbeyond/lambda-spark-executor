@@ -25,7 +25,7 @@ import java.util.*;
  * TaskDelegation
  *
  * A sample application that demonstrates the basic usage of SAMBA
- * to delegate selected task operations to execute on AWS Lambda
+ * to delegate selected Spark task operations to execute on AWS Lambda
  * compute infrastructure in the cloud.
  */
 public class TaskDelegation {
@@ -38,7 +38,7 @@ public class TaskDelegation {
 
       /*
        * Initialize a basic batch data source for the example by
-       * generating an RDD[Int].
+       * generating an RDD<Int>.
        */
       JavaRDD<Integer> dataRDD =
         sc.parallelize(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8));
@@ -52,10 +52,9 @@ public class TaskDelegation {
       Broadcast<AWSGateway> gateway = sc.broadcast(API_GATEWAY);
 
       /*
-       * Map over dataRDD[Int] to produce an RDD[AWSTask].
-       * Each AWSTask will process the Spark batch data by
-       * executing a score computation on the AWS Lambda
-       * compute service.
+       * Map over dataRDD<Int> to produce an RDD<AWSTask>.
+       * Each AWSTask will execute an AWS Lambda function exposed
+       * by the API_SCORE_ENDPOINT endpoint on the AWS API Gateway.
        */
       JavaRDD<AWSTask> aTaskRDD = dataRDD.map(number -> {
 
@@ -69,7 +68,7 @@ public class TaskDelegation {
       });
 
       /*
-       * Transform aTaskRDD[AWSTask] into aTaskResultRDD[AWSResult].
+       * Transform aTaskRDD<AWSTask> into aTaskResultRDD<AWSResult>.
        */
       JavaRDD<AWSResult> aTaskResultRDD =
                             aTaskRDD.map(aTask -> aTask.execute());

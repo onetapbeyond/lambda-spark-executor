@@ -24,8 +24,8 @@ import java.util.*;
 /*
  * RESTIntegration
  *
- * A sample application that demonstrates the basic usage of SAMBA
- * to call a REST API on the AWS API Gateway.
+ * A sample Spark application that demonstrates the basic usage of
+ * SAMBA to call a REST API on the AWS API Gateway.
  */
 public class RESTIntegration {
 
@@ -37,7 +37,7 @@ public class RESTIntegration {
 
       /*
        * Initialize a basic batch data source for the example by
-       * generating an RDD[Int].
+       * generating an RDD<Int>.
        */
       JavaDoubleRDD dataRDD =
         sc.parallelizeDoubles(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
@@ -48,11 +48,12 @@ public class RESTIntegration {
       double max = dataRDD.max();
 
       /*
-       * Call the REST "report" endpoint on the API indicated by
-       * our instance of AWSGateway, pushing the max data value detected
-       * within our Spark driver program. As we are using a mock API on
-       * the AWS API Gateway there is no response data, in this case
-       * the result simply indicates success or failure.
+       * Call API_REPORT_ENDPOINT on the API indicated by our instance
+       * of API_GATEWAY, pushing a parameter value on the REST API call
+       * representing the max data value detected within our Spark driver
+       * program. As we are using a mock API on the AWS API Gateway there
+       * is no response data, in this case the result simply indicates
+       * success or failure.
        */
       Map data = new HashMap();
       data.put("max", max);
@@ -63,7 +64,7 @@ public class RESTIntegration {
                                  .execute();
 
       /*
-       * Verify REST "report" call on API was a success.
+       * Verify REST call on API_REPORT_ENDPOINT was a success.
        */
       System.out.println("RESTIntegration: report call success=" +
                                             aTaskResult.success());

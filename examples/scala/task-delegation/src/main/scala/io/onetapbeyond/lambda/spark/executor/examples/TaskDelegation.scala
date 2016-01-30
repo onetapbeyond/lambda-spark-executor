@@ -24,7 +24,7 @@ import scala.collection.JavaConverters._
  * TaskDelegation
  *
  * A sample application that demonstrates the basic usage of SAMBA
- * to delegate selected task operations to execute on AWS Lambda
+ * to delegate selected Spark task operations to execute on AWS Lambda
  * compute infrastructure in the cloud.
  */
 object TaskDelegation {
@@ -51,9 +51,8 @@ object TaskDelegation {
 
       /*
        * Map over dataRDD[Int] to produce an RDD[AWSTask].
-       * Each AWSTask will process the Spark batch data by
-       * executing a score computation on the AWS Lambda
-       * compute service.
+       * Each AWSTask will execute an AWS Lambda function exposed
+       * by the API_SCORE_ENDPOINT endpoint on the AWS API Gateway.
        */
       val aTaskRDD = dataRDD.map(num => {
 
