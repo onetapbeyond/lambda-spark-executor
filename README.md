@@ -3,7 +3,7 @@
 SAMBA is an [Apache Spark](http://spark.apache.org/) package offering seamless
 integration with the
 [AWS Lambda](https://aws.amazon.com/lambda/) compute
-service within Spark batch and streaming applications on the JVM. This library
+service for Spark batch and streaming applications on the JVM. This library
 is built on top of the
 [aws-gateway-executor](https://github.com/onetapbeyond/aws-gateway-executor)
 library, a lightweight Java client library for calling APIs exposed by the
@@ -11,9 +11,9 @@ library, a lightweight Java client library for calling APIs exposed by the
 
 ### SAMBA Motivation
 
-Within traditional Spark deployments task operations are executed using fixed
+Within traditional Spark deployments RDD tasks are executed using fixed
 compute resources on worker nodes within the Spark cluster. With SAMBA,
-application developers can delegate selected task operations to execute using
+application developers can delegate selected RDD tasks to execute using
  on-demand AWS Lambda compute infrastructure in the cloud.
 
 More generally, SAMBA also provides a simple yet powerful mechanism for Spark
@@ -158,7 +158,7 @@ constrained by, the resources available on each worker node.
 
 SAMBA powered Spark applications benefit from the following enhancements:
 
-1. Task operations can be delegated to execute on 
+1. RDD tasks can be delegated to execute on 
 [AWS Lambda](https://aws.amazon.com/lambda/) compute infrastructure in the
 cloud.
 
