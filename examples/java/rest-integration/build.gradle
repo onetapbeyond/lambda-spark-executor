@@ -1,0 +1,51 @@
+buildscript {
+  repositories { jcenter() }
+  dependencies {
+    classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.2'
+  }
+}
+
+apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+description ="""
+SAMBA REST Integration
+"""
+
+group = "io.onetapbeyond"
+archivesBaseName = "rest-integration"
+version = "1.0"
+
+repositories {
+    jcenter()
+    maven {
+        url "http://nexus.bedatadriven.com/content/groups/public"
+    }
+}
+
+dependencies {
+    compile 'io.onetapbeyond:lambda-spark-executor_2.10:1.0'
+    compile 'org.apache.spark:spark-core_2.10:1.6.0'
+}
+
+jar {
+  manifest {
+    attributes("Implementation-Title": archivesBaseName,
+               "Implementation-Version": version)
+  }
+}
+
+shadowJar {
+  manifest {
+    attributes 'Main-Class': 'io.onetapbeyond.opencpu.spark.executor.examples.RESTIntegration'
+  }
+}
+
+
+configurations {
+    // Exclude transitive|provided dependencies from shadowJar
+    runtime.exclude module: 'spark-core_2.10'
+}
