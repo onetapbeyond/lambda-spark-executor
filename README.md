@@ -81,8 +81,8 @@ val aTaskRDD = dataRDD.map(data => {
 ```
 
 The set of `AWSTask` within `aTaskRDD` can be scheduled for
-processing by calling the new `delegate` operation provided by SAMBA
-on the RDD:
+processing on AWS Lambda infrastructure by calling the new `delegate`
+operation provided by SAMBA on the RDD:
 
 ```
 val aResultRDD = aTaskRDD.delegate
@@ -118,9 +118,9 @@ val aTaskStream = dataStream.transform(rdd => {
   })
 ```
 
-The set of `AWSTask` within `aTaskStream` can be scheduled for processing
-by calling the new `delegate` operation provided by SAMBA on each RDD within
-the stream: 
+The set of `AWSTask` within `aTaskRDD` can be scheduled for
+processing on AWS Lambda infrastructure by calling the new `delegate`
+operation provided by SAMBA on each RDD within the stream: 
 
 ```
 val aResultStream = aTaskStream.transform(rdd => rdd.delegate)
