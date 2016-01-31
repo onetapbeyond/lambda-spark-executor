@@ -68,7 +68,8 @@ public class TaskDelegation {
       });
 
       /*
-       * Transform aTaskRDD<AWSTask> into aTaskResultRDD<AWSResult>.
+       * Delegate aTaskRDD<AWSTask> execution to AWS Lambda compute
+       * infrastructure to produce aTaskResultRDD<AWSResult>.
        */
       JavaRDD<AWSResult> aTaskResultRDD =
                             aTaskRDD.map(aTask -> aTask.execute());

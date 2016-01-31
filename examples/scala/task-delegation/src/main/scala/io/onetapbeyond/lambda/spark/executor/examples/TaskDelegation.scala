@@ -65,8 +65,8 @@ object TaskDelegation {
       aTaskRDD.foreach { aTask => println(aTask) }
 
       /*
-       * Apply the SAMBA delegate transformation to aTaskRDD[AWSTask]
-       * in order to generate aTaskResultRDD[AWSResult].
+       * Delegate aTaskRDD[AWSTask] execution to AWS Lambda compute
+       * infrastructure to produce aTaskResultRDD[AWSResult].
        */
       val aTaskResultRDD = aTaskRDD.delegate
 
