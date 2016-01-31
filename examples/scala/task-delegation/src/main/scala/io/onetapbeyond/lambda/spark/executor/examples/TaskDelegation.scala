@@ -24,7 +24,7 @@ import scala.collection.JavaConverters._
  * TaskDelegation
  *
  * A sample application that demonstrates the basic usage of SAMBA
- * to delegate selected Spark task operations to execute on AWS Lambda
+ * to delegate selected Spark RDD tasks to execute on AWS Lambda
  * compute infrastructure in the cloud.
  */
 object TaskDelegation {
