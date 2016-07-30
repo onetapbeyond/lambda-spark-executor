@@ -1,3 +1,5 @@
+[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/onetapbeyond/lambda-spark-executor/master)
+
 #Apache Spark AWS Lambda Executor (SAMBA)
 
 SAMBA is an [Apache Spark](http://spark.apache.org/) package offering seamless
