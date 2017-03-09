@@ -6,14 +6,14 @@
 
 <span style="color:gray">An Apache Spark Package</span>
 
-#HSLIDE
+---
 
 ### SAMBA Apache Spark Package
 
   - Offers seamless integration with the AWS Lambda compute service
   - Within Spark batch and streaming apps on the JVM
 
-#HSLIDE
+---
 
 ### SAMBA API
 
@@ -25,7 +25,7 @@
 
 <span class="fragment" data-fragment-index="4" style="font-size: 0.8em; color:gray">The SAMBA API is built on top of the <a target="_blank" href="https://github.com/onetapbeyond/aws-gataway-executor">aws-gateway-executor</a> library.</span>
 
-#HSLIDE
+---
 
 ### aws-gateway-executor
 
@@ -34,7 +34,7 @@
 - Inside any application running on the JVM
 - Defines <span style="color:gray">AWSGateway</span>, <span style="color:gray">AWSTask</span> and <span style="color:gray">AWSResult</span>
 
-#VSLIDE
++++
 
 ### AWSGateway
 
@@ -48,7 +48,7 @@ AWSGateway gateway = AWS.Gateway(echo-api-key)
 ```
 
 
-#VSLIDE
++++
 
 ### AWSTask
 
@@ -61,7 +61,7 @@ AWSTask aTask = AWS.Task(gateway)
 
 ```
 
-#VSLIDE
++++
 
 ### AWSResult
 
@@ -71,11 +71,11 @@ AWSTask aTask = AWS.Task(gateway)
 AWSResult aResult = aTask.execute();
 ```
 
-#HSLIDE
+---
 
 ### SAMBA + Apache Spark Batch Processing
 
-#VSLIDE
++++
 
 #### Step 1. Build RDD[<span style="color:gray">AWSTask</span>]
 
@@ -91,7 +91,7 @@ val aTaskRDD = dataRDD.map(data => {
   })
 ```
 
-#VSLIDE
++++
 
 #### Step 2. Delegate RDD[<span style="color:gray">AWSTask</span>]
 
@@ -102,7 +102,7 @@ val aTaskRDD = dataRDD.map(data => {
 val aResultRDD = aTaskRDD.delegate
 ```
 
-#VSLIDE
++++
 
 #### Step 3. Process RDD[<span style="color:gray">AWSResult</span>]
 
@@ -115,15 +115,15 @@ aTaskResultRDD.foreach { result => {
 }}
 ```
 
-#VSLIDE?gist=494e0fecaf0d6a2aa2acadfb8eb9d6e8
++++?gist=494e0fecaf0d6a2aa2acadfb8eb9d6e8
 
-#HSLIDE
+---
 
 #### SAMBA Deployment Architecture
 
 ![SAMBA Deployment](https://onetapbeyond.github.io/resource/img/samba/new-samba-deploy.jpg)
 
-#HSLIDE
+---
 
 #### Some Related Links
 
