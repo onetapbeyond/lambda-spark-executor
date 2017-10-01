@@ -20,12 +20,12 @@
 ### SAMBA API
 
 <ol>
-<li class="fragment" data-fragment-index="1">New `delegate` operation on RDD[<span style="color:gray">AWSTask</span>]</li>
-<li class="fragment" data-fragment-index="2">This operation executes AWS Lambda functions</li>
-<li class="fragment" data-fragment-index="3">And generates RDD[<span style="color:gray">AWSResult</span>]</li>
+<li class="fragment">New `delegate` operation on RDD[<span style="color:gray">AWSTask</span>]</li>
+<li class="fragment">This operation executes AWS Lambda functions</li>
+<li class="fragment">And generates RDD[<span style="color:gray">AWSResult</span>]</li>
 </ol>
 
-<span class="fragment" data-fragment-index="4" style="font-size: 0.8em; color:gray">The SAMBA API is built on top of the <a target="_blank" href="https://github.com/onetapbeyond/aws-gataway-executor">aws-gateway-executor</a> library.</span>
+<span class="fragment" style="font-size: 0.8em; color:gray">The SAMBA API is built on top of the <a target="_blank" href="https://github.com/onetapbeyond/aws-gataway-executor">aws-gateway-executor</a> library.</span>
 
 ---
 
