@@ -78,51 +78,8 @@ AWSResult aResult = aTask.execute();
 @title[Batch Processing]
 ### SAMBA + Apache Spark Batch Processing
 
-+++
-
-@title[Build RDD[AWSTask]]
-#### Step 1. Build RDD[<span style="color:gray">AWSTask</span>]
-
-```Scala
-import io.onetapbeyond.lambda.spark.executor.Gateway._
-import io.onetapbeyond.aws.gateway.executor._
-
-val aTaskRDD = dataRDD.map(data => {
-  AWS.Task(gateway)
-     .resource("/score")
-     .input(data.asInput())
-     .post()
-  })
-```
-
-+++
-
-@title[Delegate RDD[AWSTask]]
-#### Step 2. Delegate RDD[<span style="color:gray">AWSTask</span>]
-
-```Scala
-// Perform RDD[AWSTask].delegate operation to execute
-// AWS Gateway calls and generate resulting RDD[AWSResult].
-
-val aResultRDD = aTaskRDD.delegate
-```
-
-+++
-
-#### Step 3. Process RDD[<span style="color:gray">AWSResult</span>]
-
-@title[Process RDD[AWSResult]]
-```Scala
-// Process RDD[AWSResult] data per app requirements. 
-
-aTaskResultRDD.foreach { result => {
-        println("TaskDelegation: compute score input=" +
-          result.input + " result=" + result.success)
-}}
-```
-
 +++?gist=onetapbeyond/494e0fecaf0d6a2aa2acadfb8eb9d6e8
-@title[SAMBA Walk-Through]
+@title[SAMBA Code-Walk]
 @[41-53](Build RDD[AWSTask])
 @[57-62](Delegate RDD[AWSTask] to AWS Lambda)
 @[64-75](Process RDD[AWSResult] from AWS Lambda)
