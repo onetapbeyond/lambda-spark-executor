@@ -78,7 +78,7 @@ AWSResult aResult = aTask.execute();
 @title[Batch Processing]
 ### SAMBA + Apache Spark Batch Processing
 
-+++?gist=onetapbeyond/494e0fecaf0d6a2aa2acadfb8eb9d6e8
++++?gist=onetapbeyond/494e0fecaf0d6a2aa2acadfb8eb9d6e8&title=SAMBA Batch Processing
 @title[SAMBA Code-Walk]
 @[41-53](Build RDD[AWSTask])
 @[57-62](Delegate RDD[AWSTask] to AWS Lambda)
