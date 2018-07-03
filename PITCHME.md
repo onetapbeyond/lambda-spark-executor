@@ -5,7 +5,7 @@
 ### AWS Lambda Executor
 ### (SAMBA)
 
-<span style="color:gray">An Apache Spark Package</span>
+@color[gray](An Apache Spark Package)
 
 ---
 
@@ -19,11 +19,11 @@
 
 ### SAMBA API
 
-<ol>
-<li class="fragment">New `delegate` operation on RDD[<span style="color:gray">AWSTask</span>]</li>
-<li class="fragment">This operation executes AWS Lambda functions</li>
-<li class="fragment">And generates RDD[<span style="color:gray">AWSResult</span>]</li>
-</ol>
+@ol
+- New `delegate` operation on RDD[@color[gray](AWSTask)]
+- This operation executes AWS Lambda functions
+- And generates RDD[@color[gray](AWSResult)]
+@olend
 
 <span class="fragment" style="font-size: 0.8em; color:gray">The SAMBA API is built on top of the <a target="_blank" href="https://github.com/onetapbeyond/aws-gataway-executor">aws-gateway-executor</a> library.</span>
 
@@ -34,13 +34,13 @@
 - A lightweight, fluent Java library
 - For calling APIs on the Amazon Web Service API Gateway
 - Inside any application running on the JVM
-- Defines <span style="color:gray">AWSGateway</span>, <span style="color:gray">AWSTask</span> and <span style="color:gray">AWSResult</span>
+- Defines @color[gray](AWSGateway), @color[gray](AWSTask) and @color[gray](AWSResult)
 
 +++
 
 ### AWSGateway
 
-<span style="color:gray">A handle that represents an API on the AWS API Gateway.</span>
+@color[gray](A handle that represents an API on the AWS API Gateway.)
 
 ```Java
 AWSGateway gateway = AWS.Gateway(echo-api-key)
@@ -54,7 +54,7 @@ AWSGateway gateway = AWS.Gateway(echo-api-key)
 
 ### AWSTask
 
-<span style="color:gray">An executable object that represents an AWS Gateway call.</span>
+@color[gray](An executable object that represents an AWS Gateway call.)
 
 ```Java
 AWSTask aTask = AWS.Task(gateway)
@@ -67,7 +67,7 @@ AWSTask aTask = AWS.Task(gateway)
 
 ### AWSResult
 
-<span style="color:gray">An object that represents the result of an AWS Gateway call.</span>
+@color[gray](An object that represents the result of an AWS Gateway call.)
 
 ```Java
 AWSResult aResult = aTask.execute();
